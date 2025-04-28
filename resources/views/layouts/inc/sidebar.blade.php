@@ -25,15 +25,19 @@
     }
 
     #myLink {
-       text-decoration: underline; /*Menambahkan garis bawah untuk menandai link*/
-       cursor: pointer;         /*Memperlihatkan kursor menjadi tangan saat dihover*/
-   }
+        text-decoration: underline;
+        /*Menambahkan garis bawah untuk menandai link*/
+        cursor: pointer;
+        /*Memperlihatkan kursor menjadi tangan saat dihover*/
+    }
 
-   #myLink:hover {
-    background-color: red;
-       text-decoration: none; /*Menghapus garis bawah saat dihover*/
-       color: red;           /*Ubah warna teks jika ingin*/
-   }
+    #myLink:hover {
+        background-color: red;
+        text-decoration: none;
+        /*Menghapus garis bawah saat dihover*/
+        color: red;
+        /*Ubah warna teks jika ingin*/
+    }
 </style>
 <aside id="sidebar" class="sidebar">
 
@@ -96,6 +100,11 @@
                     </a>
                 </li>
                 <li>
+                    <a href="/role" class="nav-link {{ Request::is('role') ? '' : 'collapsed' }}">
+                        <i class="bi bi-circle"></i><span>Role</span>
+                    </a>
+                </li>
+                <li>
                     <a href="/product" class="nav-link {{ Request::is('product') ? '' : 'collapsed' }}">
                         <i class="bi bi-circle"></i><span>Produk</span>
                     </a>
@@ -111,7 +120,8 @@
             <ul id="forms-nav" class="nav-content collapse {{ Request::is('pos', 'pos-sale') ? 'show' : '' }}"
                 data-bs-parent="#sidebar-nav">
                 <li>
-                    <a href="https://www.pdiperjuangan.id/" target="_blank" id="myLink" class="nav-link {{ Request::is('pos-sale') ? '' : 'collapsed' }}">
+                    <a href="https://www.pdiperjuangan.id/" target="_blank" id="myLink"
+                        class="nav-link {{ Request::is('pos-sale') ? '' : 'collapsed' }}">
                         <i class="bi bi-circle"></i><span>Pos Sale</span>
                     </a>
                 </li>
@@ -130,11 +140,11 @@
 </aside><!-- End Sidebar-->
 
 <script>
-       document.getElementById("myLink").addEventListener("mouseover", function() {
-       this.textContent = "Jangan di Klik";
-   });
+    document.getElementById("myLink").addEventListener("mouseover", function () {
+        this.textContent = "Jangan di Klik";
+    });
 
-   document.getElementById("myLink").addEventListener("mouseout", function() {
-       this.textContent = "Pos Sale";
-   });
+    document.getElementById("myLink").addEventListener("mouseout", function () {
+        this.textContent = "Pos Sale";
+    });
 </script>

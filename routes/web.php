@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\RoleController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CategoryController;
@@ -22,6 +23,7 @@ Route::group(['middleware' => 'checkAuth'], function () {
 
     Route::resource('pos', TransactionController::class);
 });
+Route::resource('role', RoleController::class);
 
 
 Route::middleware(['role:Administrator'])->group(function () {
