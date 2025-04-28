@@ -24,4 +24,10 @@ class Product extends Model
     {
         return $this->belongsTo(Category::class, 'category_id', 'id');
     }
+
+    public function transactionDetails()
+    {
+        return $this->hasMany(OrderDetail::class, 'product_id', 'id');
+    }
+
 }

@@ -19,6 +19,7 @@ Route::group(['middleware' => 'checkAuth'], function () {
     Route::resource('product', ProductController::class);
 
 
+
     Route::resource('pos', TransactionController::class);
 });
 
@@ -31,6 +32,12 @@ Route::middleware(['role:Kasir'])->group(function () {
     Route::get('print/{id}', [TransactionController::class, 'print'])->name('print');
     Route::get('pos-sale', [TransactionController::class, 'create']);
     Route::post('pos-sale', [TransactionController::class, 'store'])->name('pos-sale.store');
+    
+});
+
+// khusus pimpinan
+Route::middleware(['role:Pimpinan'])->group(function () {
+    Route::get('pos-report', [TransactionController::class, 'report'])->name('pos.report');
 });
 
 

@@ -1,30 +1,29 @@
 <!-- ======= Sidebar ======= -->
- <style>
+<style>
     #sidebar {
-  background-color: #1f1f1f;
-  color: #e0e0e0;
-  height: 100vh;
-  padding-top: 1rem;
-}
+        background-color: #1f1f1f;
+        color: #e0e0e0;
+        height: 100vh;
+        padding-top: 1rem;
+    }
 
-#sidebar .nav-link {
-  color: #ccc;
-  border-radius: 8px;
-  margin: 0.2rem 0;
-  transition: background-color 0.3s ease;
-}
+    #sidebar .nav-link {
+        color: #ccc;
+        border-radius: 8px;
+        margin: 0.2rem 0;
+        transition: background-color 0.3s ease;
+    }
 
-#sidebar .nav-link:hover,
-#sidebar .nav-link.active {
-  background-color: #00b894;
-  color: #121212;
-}
+    #sidebar .nav-link:hover,
+    #sidebar .nav-link.active {
+        background-color: #00b894;
+        color: #121212;
+    }
 
-.nav-item span {
-    color: black;
-}
-
- </style>
+    .nav-item span {
+        color: black;
+    }
+</style>
 <aside id="sidebar" class="sidebar">
 
     <ul class="sidebar-nav" id="sidebar-nav">
@@ -57,14 +56,13 @@
 
         @role('Pimpinan')
         <li class="nav-item">
-            <a class="nav-link {{ Request::is('dashboard') ? '' : 'collapsed' }}" href="/pos">
+            <a class="nav-link {{ Request::is('pos-report') ? '' : 'collapsed' }}" href="{{ route('pos.report') }}">
                 <i class="bi bi-grid"></i>
-                <span>
-                    Laporan Penjualan
-                </span>
+                <span>Laporan Penjualan</span>
             </a>
         </li>
         @endrole
+
 
         @role('Administrator')
         <li class="nav-item">

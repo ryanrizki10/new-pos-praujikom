@@ -7,6 +7,7 @@ use App\Models\OrderDetail;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use RealRashid\SweetAlert\Facades\Alert;
+use Illuminate\Support\Carbon; // di atas controller, buat bantu parsing tanggal
 
 class TransactionController extends Controller
 {
@@ -126,4 +127,26 @@ class TransactionController extends Controller
         Alert::success('Success', 'Payment has been successfully processed.');
         return redirect()->route('pos.index');
     }
+
+    public function report(Request $request)
+{
+    $query = Order::query();
+
+    if ($request->filled('filter')) {
+        $filter = $request->filter;
+
+        if ($filter === 'daily' && $request->date) {
+            $query->whereDate('order_date', $request->date);
+        } elseif ($filter === 'weekly' && $request->start_date && $request->end_date) {
+            $query->whereBetween('order_date', [$request->start_date, $request->end_date]);
+        } elseif ($filter === 'monthly' && $request->month) {
+            $query->whereMonth('order_date', Carbon::parse($request->month)->month)
+                  ->whereYear('order_date', Carbon::parse($request->month)->year);
+        }
+    }
+
+    $orders = $query->orderBy('order_date', 'desc')->paginate(10);
+
+    return view('pos.report', compact('orders'));
+}
 }
