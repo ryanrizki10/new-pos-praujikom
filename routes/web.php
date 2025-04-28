@@ -31,11 +31,11 @@ Route::middleware(['role:Administrator'])->group(function () {
 });
 
 Route::middleware(['role:Kasir'])->group(function () {
-    Route::get('print/{id}', [TransactionController::class, 'print'])->name('print');
     Route::get('pos-sale', [TransactionController::class, 'create']);
     Route::post('pos-sale', [TransactionController::class, 'store'])->name('pos-sale.store');
     
 });
+Route::get('print/{id}', [TransactionController::class, 'print'])->name('print');
 
 // khusus pimpinan
 Route::middleware(['role:Pimpinan'])->group(function () {

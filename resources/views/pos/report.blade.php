@@ -45,6 +45,11 @@
             </div>
         </form>
 
+        <!-- Tombol Cetak -->
+        <div class="d-grid mb-3" style="width: 120px;">
+            <button onclick="window.print()" class="btn btn-success print-btn">Cetak</button>
+        </div>
+
         <div class="table-responsive">
             <table class="table table-hover table-bordered align-middle">
                 <thead class="table-primary">
@@ -86,4 +91,14 @@
 
     </div>
 </section>
+
+<!-- CSS untuk sembunyikan tombol cetak saat print -->
+<style>
+    @media print {
+        .print-btn {
+            display: none !important;
+        }
+    }
+</style>
+
 @endsection
