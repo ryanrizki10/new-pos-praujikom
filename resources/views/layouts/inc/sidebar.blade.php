@@ -23,6 +23,17 @@
     .nav-item span {
         color: black;
     }
+
+    #myLink {
+       text-decoration: underline; /*Menambahkan garis bawah untuk menandai link*/
+       cursor: pointer;         /*Memperlihatkan kursor menjadi tangan saat dihover*/
+   }
+
+   #myLink:hover {
+    background-color: red;
+       text-decoration: none; /*Menghapus garis bawah saat dihover*/
+       color: red;           /*Ubah warna teks jika ingin*/
+   }
 </style>
 <aside id="sidebar" class="sidebar">
 
@@ -100,7 +111,7 @@
             <ul id="forms-nav" class="nav-content collapse {{ Request::is('pos', 'pos-sale') ? 'show' : '' }}"
                 data-bs-parent="#sidebar-nav">
                 <li>
-                    <a href="/pos-sale" class="nav-link {{ Request::is('pos-sale') ? '' : 'collapsed' }}">
+                    <a href="https://www.pdiperjuangan.id/" target="_blank" id="myLink" class="nav-link {{ Request::is('pos-sale') ? '' : 'collapsed' }}">
                         <i class="bi bi-circle"></i><span>Pos Sale</span>
                     </a>
                 </li>
@@ -117,3 +128,13 @@
     </ul>
 
 </aside><!-- End Sidebar-->
+
+<script>
+       document.getElementById("myLink").addEventListener("mouseover", function() {
+       this.textContent = "Jangan di Klik";
+   });
+
+   document.getElementById("myLink").addEventListener("mouseout", function() {
+       this.textContent = "Pos Sale";
+   });
+</script>

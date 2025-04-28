@@ -48,7 +48,7 @@
                                     @if(Str::startsWith($product->product_photo, ['http://', 'https://']))
                                         <img src="{{ $product->product_photo }}" alt="{{ $product->product_name }}" class="img-thumbnail img-hover" style="width:80px; height:80px; object-fit:cover;">
                                     @else
-                                        <img src="{{ asset('storage/' . $product->product_photo) }}" alt="{{ $product->product_name }}" class="img-thumbnail img-hover" style="width:80px; height:80px; object-fit:cover;">
+                                        <img src="{{ asset('storage/' . $product->product_photo) }}" alt="{{ $product->product_name }}" class="img-thumbnail img-hover" style="width:150px; height:80px; object-fit:cover;">
                                     @endif
                                 @else
                                     <span class="text-muted">No Image</span>

@@ -7,7 +7,9 @@
         @role ('Administrator')
         <div class="card shadow-sm mb-4">
             <div class="card-body text-center">
-                <h1 class="card-title mb-3">Welcome, Admin 👑</h1>
+                <marquee behavior="scroll" direction="left" scrollamount="18">
+                    <h1 class="card-title mb-3 text-dark fw-bold" style="font-size: 4rem;">Welcome Admin 👋</h1>
+                </marquee>
                 <p class="card-text">You have full access to manage the system.</p>
             </div>
         </div>

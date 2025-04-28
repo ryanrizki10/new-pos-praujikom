@@ -85,8 +85,15 @@ class UserController extends Controller
      */
     public function destroy(string $id)
     {
-        User::where('id', $id)->delete();
-
-        return redirect()->to('users');
+        $user = User::findOrFail($id);
+    
+        // Putuskan dulu semua hubungan role
+        $user->roles()->detach();
+    
+        // Baru hapus user
+        $user->delete();
+    
+        return redirect()->to('users')->with('success', 'User berhasil dihapus');
     }
+    
 }
