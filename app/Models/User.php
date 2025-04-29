@@ -47,17 +47,19 @@ class User extends Authenticatable
     }
 
 
-
+    // mengecek apakah user memiliki minimal satu role dari daftar role yang diberikan
     public function hasAnyRole(array $roles)
     {
         return $this->roles->whereIn('name', $roles)->isNotEmpty();
     }
 
+    // mendefinisikan relasi antara users, user_roles dan roles
     public function roles()
     {
         return $this->belongsToMany(Role::class, 'user_roles', 'user_id', 'role_id');
     }
 
+    // Mengecek apakah user memiliki role tertentu berdasarkan nama role
     public function hasRole($role)
     {
         return $this->roles->contains('name', $role);
